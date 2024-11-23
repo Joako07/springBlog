@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PublicationDto {
+public class ComentDto {
 
     private Long id;
-    private String title;
-    private String description;
-    private String content;
-
+    private String name;
+    private String email;
+    private String body;
 }
