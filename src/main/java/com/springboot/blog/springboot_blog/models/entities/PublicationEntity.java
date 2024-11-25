@@ -3,6 +3,8 @@ package com.springboot.blog.springboot_blog.models.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,6 +40,7 @@ public class PublicationEntity {
     @Column(name="contenido", nullable = false)
     private String content;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ComentEntity> coments = new HashSet<>();
 

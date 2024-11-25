@@ -1,5 +1,9 @@
 package com.springboot.blog.springboot_blog.models.dtos;
 
+import java.util.Set;
+
+import com.springboot.blog.springboot_blog.models.entities.ComentEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +19,6 @@ public class PublicationDto {
     private String title;
     private String description;
     private String content;
+    private Set<ComentEntity> coments;
 
 }
