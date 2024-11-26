@@ -12,14 +12,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 @Builder
 @AllArgsConstructor
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends RuntimeException{
+@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+public class MethodArgumentTypeMismatchException extends RuntimeException{
 
     private static final long serialVersionUID = 1L;
 
-    private String nombreDelRecurso;
-    private String nombreDelCampo;
-    private long valorDelCampo;
-    private String message;
+    private HttpStatus state;
+    private String mesagge; 
 
 }

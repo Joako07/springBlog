@@ -1,6 +1,5 @@
 package com.springboot.blog.springboot_blog.models.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -42,6 +41,6 @@ public class PublicationEntity {
 
     @JsonBackReference
     @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ComentEntity> coments = new HashSet<>();
+    private Set<ComentEntity> coments;
 
 }

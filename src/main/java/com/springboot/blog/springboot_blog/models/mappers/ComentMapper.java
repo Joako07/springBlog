@@ -28,26 +28,4 @@ public class ComentMapper {
         ComentDto comentDto = modelMapper.map(comentEntity, ComentDto.class);
         return comentDto;
     }
-
-    /* 
-    //Convierto de DTO a Entidad
-    public static ComentEntity dtoToEntity (ComentDto comentDto){
-        return ComentEntity.builder()
-                .name(comentDto.getName())
-                .email(comentDto.getEmail())
-                .body(comentDto.getBody())
-                .build();
-    }
-
-    //Convierto de Entidad a DTO
-    public static ComentDto entityToDto(ComentEntity comentEntity){
-        return ComentDto.builder()
-                .id(comentEntity.getId())
-                .name(comentEntity.getName())
-                .email(comentEntity.getEmail())
-                .body(comentEntity.getBody())
-                .build();
-    }
-    */
-
 }
