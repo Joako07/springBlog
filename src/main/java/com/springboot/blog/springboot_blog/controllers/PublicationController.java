@@ -12,6 +12,8 @@ import com.springboot.blog.springboot_blog.models.dtos.PublicationDto;
 import com.springboot.blog.springboot_blog.services.PublicationService;
 import com.springboot.blog.springboot_blog.utilities.Constants;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,12 +43,12 @@ public class PublicationController {
     }
 
     @PostMapping
-    public ResponseEntity<PublicationDto> createPublication(@RequestBody PublicationDto publicationDto) {
+    public ResponseEntity<PublicationDto> createPublication(@Valid @RequestBody PublicationDto publicationDto) {
         return new ResponseEntity<>(publicationService.crearPublication(publicationDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PublicationDto> updatePublication(@RequestBody PublicationDto publicationDto,
+    public ResponseEntity<PublicationDto> updatePublication(@Valid @RequestBody PublicationDto publicationDto,
             @PathVariable("id") Long id) {
         return new ResponseEntity<>(publicationService.updatePublication(publicationDto, id), HttpStatus.OK);
     }
