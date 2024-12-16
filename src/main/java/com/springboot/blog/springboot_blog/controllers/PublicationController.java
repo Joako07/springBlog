@@ -28,6 +28,7 @@ public class PublicationController {
     @Autowired
     private PublicationService publicationService;
 
+    
     @GetMapping
     public ResponseEntity<Page<PublicationDto>> getPublications(
             @RequestParam(value = "PageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,
@@ -38,7 +39,7 @@ public class PublicationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PublicationDto> getPublicationById(@PathVariable("id") Long id) {
+    public ResponseEntity<PublicationDto> getPublicationById(@PathVariable Long id) {
         return new ResponseEntity<>(publicationService.getById(id), HttpStatus.OK);
     }
 
@@ -49,12 +50,12 @@ public class PublicationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<PublicationDto> updatePublication(@Valid @RequestBody PublicationDto publicationDto,
-            @PathVariable("id") Long id) {
+            @PathVariable Long id) {
         return new ResponseEntity<>(publicationService.updatePublication(publicationDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletPublicationById(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletPublicationById(@PathVariable Long id) {
         publicationService.deletPublication(id);
         return new ResponseEntity<>("Publicación eliminada con exito", HttpStatus.OK);
     }
