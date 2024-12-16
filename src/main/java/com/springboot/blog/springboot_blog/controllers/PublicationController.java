@@ -28,6 +28,7 @@ public class PublicationController {
     @Autowired
     private PublicationService publicationService;
 
+    
     @GetMapping
     public ResponseEntity<Page<PublicationDto>> getPublications(
             @RequestParam(value = "PageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,

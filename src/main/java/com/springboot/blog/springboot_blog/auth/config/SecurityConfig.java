@@ -29,7 +29,6 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(authRequest -> authRequest
         .requestMatchers("/auth/**").permitAll()
-        .requestMatchers("/api/**").permitAll()
         .anyRequest().authenticated())
         //Desactivo los estados de sesion de sprin security para usar jwt
         .sessionManagement(sessionManager -> 

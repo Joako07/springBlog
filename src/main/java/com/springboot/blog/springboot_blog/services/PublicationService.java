@@ -8,8 +8,8 @@ public interface PublicationService {
 
     public PublicationDto crearPublication(PublicationDto publicationDto);
 
-    public Page<PublicationDto> getAllPublications(int pageNumber, int sizePage,String orderBy,String sortDirection);
-    
+    public Page<PublicationDto> getAllPublications(int pageNumber,int sizePage,String orderBy,String sortDirection);
+   
     public PublicationDto getById(long id);
 
     public PublicationDto updatePublication(PublicationDto publicationDto, long id);

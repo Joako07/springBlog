@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
     private final JwtService jwtService;
@@ -58,7 +59,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
                             }
                         } 
                       
-                        
+                        filterChain.doFilter(request, response);
                 }
             
                 //Obtengo el token sacandole el prefijo Bearer

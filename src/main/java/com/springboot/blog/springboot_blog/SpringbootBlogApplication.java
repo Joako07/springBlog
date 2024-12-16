@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringbootBlogApplication {
 
-    @Bean
+   	@Bean
     ModelMapper modelMapper(){
-		return new ModelMapper();
+	return new ModelMapper();
 	}
 
 	public static void main(String[] args) {
