@@ -31,8 +31,8 @@ public class PublicationController {
     
     @GetMapping
     public ResponseEntity<Page<PublicationDto>> getPublications(
-            @RequestParam(value = "PageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,
-            @RequestParam(value = "PageSize",defaultValue = Constants.MEDIDA_DE_PAGINA_POR_DEFECTO, required = false) int sizePage,
+            @RequestParam(value = "pageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = Constants.MEDIDA_DE_PAGINA_POR_DEFECTO, required = false) int sizePage,
             @RequestParam(value = "sortBy", defaultValue = Constants.ORDENAR_POR_DEFECTO, required = false) String orderBy,
             @RequestParam(value = "sortDir", defaultValue = "asc",required = false) String sortDirection){
         return new ResponseEntity<>(publicationService.getAllPublications(pageNumber, sizePage, orderBy,sortDirection),HttpStatus.OK);
