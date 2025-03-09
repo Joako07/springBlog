@@ -14,7 +14,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler (ResourceNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND) //404
     public ResponseEntity<ApiExceptionResponse> handleNotFoundException(ResourceNotFoundException ex, WebRequest webRequest){
         ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
         .timeStamp(Instant.now())
@@ -35,7 +33,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     } 
 
     @ExceptionHandler(BlogAppException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ApiExceptionResponse> handleBlogAppException(BlogAppException ex, WebRequest webRequest){
         ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
         .timeStamp(Instant.now())
@@ -47,7 +44,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ApiErrorException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ApiExceptionResponse> handleGlobalException(ApiErrorException ex, WebRequest webRequest){
         ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
         .timeStamp(Instant.now())
@@ -59,18 +55,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ApiExceptionResponse> handleMethodArgumentTypeException(MethodArgumentTypeMismatchException ex, WebRequest webRequest){
         ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
         .timeStamp(Instant.now())
-        .message(ex.getMessage())
+        .message("Tipo de dato incorrecto para el parámetro solicitado")
         .details(webRequest.getDescription(false))
         .build();
 
         return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
     }
 
-<<<<<<< HEAD
+
      @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiExceptionResponse> handleInvalidEnumException(HttpMessageNotReadableException ex, WebRequest webRequest) {
    
@@ -81,18 +76,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         .build();
    
     return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
-=======
+}
+
     @ExceptionHandler(BadRequestApiException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST) // Devuelve un 400
     public ResponseEntity<ApiExceptionResponse> handleBadRequestException(BadRequestApiException ex, WebRequest webRequest) {
         ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
-        .timeStamp(new Date())
+        .timeStamp(Instant.now())
         .message(ex.getMessage())
         .details(webRequest.getDescription(false))
         .build();
 
         return new ResponseEntity<>(apiExceptionResponse, HttpStatus.BAD_REQUEST);
->>>>>>> 9c1456fdae300567a001d9d4547119c4abbb0900
     }
 
     //Este metodo lo obtengo de la extencion ResponseEntityExceptionHandler y es para manejar la validación de argumentos en los controladores

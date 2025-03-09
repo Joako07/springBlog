@@ -1,6 +1,6 @@
 package com.springboot.blog.springboot_blog.exceptions;
 
-import java.util.Date;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ApiExceptionResponse {
 
-    private Date timeStamp;
+    private Instant timeStamp;
     private String message;
     private String details;
 
