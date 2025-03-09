@@ -28,17 +28,18 @@ public class PublicationController {
     @Autowired
     private PublicationService publicationService;
 
+    
     @GetMapping
     public ResponseEntity<Page<PublicationDto>> getPublications(
-            @RequestParam(value = "PageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,
-            @RequestParam(value = "PageSize",defaultValue = Constants.MEDIDA_DE_PAGINA_POR_DEFECTO, required = false) int sizePage,
+            @RequestParam(value = "pageNum", defaultValue = Constants.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = Constants.MEDIDA_DE_PAGINA_POR_DEFECTO, required = false) int sizePage,
             @RequestParam(value = "sortBy", defaultValue = Constants.ORDENAR_POR_DEFECTO, required = false) String orderBy,
-            @RequestParam(value = "sortDir", defaultValue = "ace",required = false) String sortDirection){
+            @RequestParam(value = "sortDir", defaultValue = "asc",required = false) String sortDirection){
         return new ResponseEntity<>(publicationService.getAllPublications(pageNumber, sizePage, orderBy,sortDirection),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PublicationDto> getPublicationById(@PathVariable("id") Long id) {
+    public ResponseEntity<PublicationDto> getPublicationById(@PathVariable Long id) {
         return new ResponseEntity<>(publicationService.getById(id), HttpStatus.OK);
     }
 
@@ -49,12 +50,12 @@ public class PublicationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<PublicationDto> updatePublication(@Valid @RequestBody PublicationDto publicationDto,
-            @PathVariable("id") Long id) {
+            @PathVariable Long id) {
         return new ResponseEntity<>(publicationService.updatePublication(publicationDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletPublicationById(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deletPublicationById(@PathVariable Long id) {
         publicationService.deletPublication(id);
         return new ResponseEntity<>("Publicación eliminada con exito", HttpStatus.OK);
     }

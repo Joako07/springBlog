@@ -70,6 +70,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
     }
 
+<<<<<<< HEAD
      @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiExceptionResponse> handleInvalidEnumException(HttpMessageNotReadableException ex, WebRequest webRequest) {
    
@@ -80,6 +81,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         .build();
    
     return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
+=======
+    @ExceptionHandler(BadRequestApiException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // Devuelve un 400
+    public ResponseEntity<ApiExceptionResponse> handleBadRequestException(BadRequestApiException ex, WebRequest webRequest) {
+        ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
+        .timeStamp(new Date())
+        .message(ex.getMessage())
+        .details(webRequest.getDescription(false))
+        .build();
+
+        return new ResponseEntity<>(apiExceptionResponse, HttpStatus.BAD_REQUEST);
+>>>>>>> 9c1456fdae300567a001d9d4547119c4abbb0900
     }
 
     //Este metodo lo obtengo de la extencion ResponseEntityExceptionHandler y es para manejar la validación de argumentos en los controladores
