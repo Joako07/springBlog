@@ -8,7 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -64,19 +63,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
     }
-
-
-     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ApiExceptionResponse> handleInvalidEnumException(HttpMessageNotReadableException ex, WebRequest webRequest) {
-   
-    ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
-        .timeStamp(Instant.now())
-        .message("Bad Request- Hay un valor proporcionado no es válido.")
-        .details(webRequest.getDescription(false))
-        .build();
-   
-    return new ResponseEntity<>(apiExceptionResponse,HttpStatus.BAD_REQUEST);
-}
 
     @ExceptionHandler(BadRequestApiException.class)
     public ResponseEntity<ApiExceptionResponse> handleBadRequestException(BadRequestApiException ex, WebRequest webRequest) {
