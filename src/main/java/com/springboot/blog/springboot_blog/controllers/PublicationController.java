@@ -45,7 +45,7 @@ public class PublicationController {
 
     @PostMapping
     public ResponseEntity<PublicationDto> createPublication(@Valid @RequestBody PublicationDto publicationDto) {
-        return new ResponseEntity<>(publicationService.crearPublication(publicationDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(publicationService.createPublication(publicationDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
