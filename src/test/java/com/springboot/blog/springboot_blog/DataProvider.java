@@ -1,17 +1,12 @@
 package com.springboot.blog.springboot_blog;
 
-import static org.mockito.Mockito.mockStatic;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.springboot.blog.springboot_blog.models.dtos.CommentDto;
-import com.springboot.blog.springboot_blog.models.dtos.PublicationDto;
 import com.springboot.blog.springboot_blog.models.entities.CommentEntity;
 import com.springboot.blog.springboot_blog.models.entities.PublicationEntity;
-import com.springboot.blog.springboot_blog.models.mappers.CommentMapper;
-import com.springboot.blog.springboot_blog.models.mappers.PublicationMapper;
+
 
 public class DataProvider {
 
@@ -62,20 +57,8 @@ public class DataProvider {
         publicationEntity.setDescription("Breve descripción");
         publicationEntity.setContent("Contenido de la publicación");
         publicationEntity.setComments(listSampleComments(publicationEntity));
-
+        
         return publicationEntity;
-    }
-
-    public static PublicationDto newPublicationDto(){
-
-        PublicationDto publicationDto  = new PublicationDto();
-        publicationDto.setId(1L);
-        publicationDto.setTitle("Mi primera Publicacion de prueba");
-        publicationDto.setDescription("Breve descripción");
-        publicationDto.setContent("Contenido de la publicación");
-        publicationDto.setComments(listSampleComments(publicationDto));
-
-        return publicationDto;
-    }
-
+    }  
+    
 }
