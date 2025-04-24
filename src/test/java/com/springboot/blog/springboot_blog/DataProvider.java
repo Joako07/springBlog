@@ -60,5 +60,17 @@ public class DataProvider {
         
         return publicationEntity;
     }  
+
+    public static PublicationEntity updatedPublicationEntity(){
+
+        PublicationEntity publicationEntity  = new PublicationEntity();
+        publicationEntity.setId(1L);
+        publicationEntity.setTitle("Mi publicación Actualizada");
+        publicationEntity.setDescription("Gran descripción");
+        publicationEntity.setContent("Contenido");
+        publicationEntity.setComments(listSampleComments(publicationEntity));
+        
+        return publicationEntity;
+    }  
     
 }
