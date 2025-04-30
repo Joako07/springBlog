@@ -18,7 +18,7 @@ public class BlogAppException extends RuntimeException {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private HttpStatus state;
-    private String mesagge; 
+    private HttpStatus status;
+    private String message; 
 
 }

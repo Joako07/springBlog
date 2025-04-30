@@ -6,7 +6,7 @@ import com.springboot.blog.springboot_blog.models.dtos.PublicationDto;
 
 public interface PublicationService {
 
-    public PublicationDto crearPublication(PublicationDto publicationDto);
+    public PublicationDto createPublication(PublicationDto publicationDto);
 
     public Page<PublicationDto> getAllPublications(int pageNumber,int sizePage,String orderBy,String sortDirection);
    
@@ -14,6 +14,6 @@ public interface PublicationService {
 
     public PublicationDto updatePublication(PublicationDto publicationDto, long id);
 
-    public void deletPublication(long id);
+    public void deletePublication(long id);
 
 }

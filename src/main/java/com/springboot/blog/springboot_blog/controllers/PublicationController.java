@@ -45,7 +45,7 @@ public class PublicationController {
 
     @PostMapping
     public ResponseEntity<PublicationDto> createPublication(@Valid @RequestBody PublicationDto publicationDto) {
-        return new ResponseEntity<>(publicationService.crearPublication(publicationDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(publicationService.createPublication(publicationDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -55,8 +55,8 @@ public class PublicationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletPublicationById(@PathVariable Long id) {
-        publicationService.deletPublication(id);
+    public ResponseEntity<String> deletePublicationById(@PathVariable Long id) {
+        publicationService.deletePublication(id);
         return new ResponseEntity<>("Publicación eliminada con exito", HttpStatus.OK);
     }
 

@@ -39,8 +39,8 @@ public class CommentController {
     }
     
     @PostMapping("/{publicationId}/comment")
-    public ResponseEntity<CommentDto> creatComment(@PathVariable long publicationId,@Valid @RequestBody CommentDto commentDto) {
-        return new ResponseEntity<>(commentService.creatComment(publicationId, commentDto),HttpStatus.CREATED);
+    public ResponseEntity<CommentDto> createComment(@PathVariable long publicationId,@Valid @RequestBody CommentDto commentDto) {
+        return new ResponseEntity<>(commentService.createComment(publicationId, commentDto),HttpStatus.CREATED);
     }
 
     @PutMapping("/{publicationId}/comment/{id}")
@@ -49,8 +49,8 @@ public class CommentController {
     }
 
     @DeleteMapping("/{publicationId}/comment/{id}")
-    public ResponseEntity<String> deletComment(@PathVariable long publicationId,@PathVariable long id){
-        commentService.deletCommentById(publicationId, id);
+    public ResponseEntity<String> deleteComment(@PathVariable long publicationId,@PathVariable long id){
+        commentService.deleteCommentById(publicationId, id);
         return new ResponseEntity<>("Comentario eliminado con exito", HttpStatus.OK);
     }
     
