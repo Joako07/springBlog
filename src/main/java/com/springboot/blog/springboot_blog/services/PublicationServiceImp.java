@@ -86,7 +86,7 @@ public class PublicationServiceImp implements PublicationService {
 
    @Override
    @Transactional
-   public void deletPublication(long id) {
+   public void deletePublication(long id) {
       // Verifico que exista le publicación a eliminar
       Optional<PublicationEntity> publication = publicationRepository.findById(id);
       if (publication.isEmpty()) {

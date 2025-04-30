@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +28,7 @@ public class CommentServiceImp implements CommentService {
 
     @Override
     @Transactional
-    public CommentDto creatComment(long publicationId, CommentDto commentDto) {
+    public CommentDto createComment(long publicationId, CommentDto commentDto) {
          //Convierto de dto a entidad para crear el comentario 
         CommentEntity commentEntity = CommentMapper.dtoToEntity(commentDto);
 
@@ -50,12 +49,6 @@ public class CommentServiceImp implements CommentService {
 
          //Convierto de entidad a dto para mostrar la respuesta
         return CommentMapper.entityToDto(commentEntity2);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Page<CommentDto> getAllComments(int pageNumber, int sizePage, String orderBy, String sortDirection) {
-        throw new UnsupportedOperationException("Unimplemented method 'getAllComents'");
     }
 
     @Override
@@ -134,7 +127,7 @@ public class CommentServiceImp implements CommentService {
 
     @Override
     @Transactional
-    public void deletCommentById(long publicationId,long id) {
+    public void deleteCommentById(long publicationId,long id) {
            //Verifico que exista le publicación
            Optional<PublicationEntity> publication = publicationRepository.findById(publicationId);
            if(publication.isEmpty()){

@@ -14,6 +14,6 @@ public interface PublicationService {
 
     public PublicationDto updatePublication(PublicationDto publicationDto, long id);
 
-    public void deletPublication(long id);
+    public void deletePublication(long id);
 
 }

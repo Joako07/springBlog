@@ -55,8 +55,8 @@ public class PublicationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletPublicationById(@PathVariable Long id) {
-        publicationService.deletPublication(id);
+    public ResponseEntity<String> deletePublicationById(@PathVariable Long id) {
+        publicationService.deletePublication(id);
         return new ResponseEntity<>("Publicación eliminada con exito", HttpStatus.OK);
     }
 

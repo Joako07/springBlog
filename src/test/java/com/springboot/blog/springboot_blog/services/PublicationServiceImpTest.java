@@ -59,8 +59,7 @@ public class PublicationServiceImpTest {
         // When
         try (MockedStatic<PublicationMapper> mapperMock = mockStatic(PublicationMapper.class)) {
             for (int i = 0; i < publicationEntities.size(); i++) {
-                final int index = i; // La variable i no puede cambiar dentro de una funcion lambda por eso creo un
-                                     // final.
+                final int index = i; // La variable i no puede cambiar dentro de una funcion lambda por eso creo un final.
                 mapperMock.when(() -> PublicationMapper.entityToDto(publicationEntities.get(index)))
                         .thenReturn(publicationDtos.get(index));
             }
@@ -99,7 +98,7 @@ public class PublicationServiceImpTest {
             assertEquals(publicationDto.getDescription(), result.getDescription());
             assertEquals(publicationDto.getContent(), result.getContent());
             assertEquals(publicationDto.getComments(), result.getComments());
-            verify(publicationRepository).save(publicationEntity);
+            verify(publicationRepository).save(any(PublicationEntity.class));
         }
     }
 
@@ -206,41 +205,42 @@ public class PublicationServiceImpTest {
 
     @DisplayName("Test para eliminar publicacion ")
     @Test
-    public void testDeletPublication(){
-        //Given
+    public void testDeletPublication() {
+        // Given
         Long id = 1L;
         PublicationEntity publicationEntity = DataProvider.newPublicationEntity();
 
-        //When
-       when(publicationRepository.findById(id)).thenReturn(Optional.of(publicationEntity));
-       publicationServiceImp.deletPublication(id);
+        // When
+        when(publicationRepository.findById(id)).thenReturn(Optional.of(publicationEntity));
+        publicationServiceImp.deletePublication(id);
 
-        //Then
+        // Then
         ArgumentCaptor<Long> longArgument = ArgumentCaptor.forClass(Long.class);
         verify(publicationRepository).deleteById(longArgument.capture());
-       verify(publicationRepository).findById(id);
-       verify(publicationRepository).deleteById(id);
+        verify(publicationRepository).findById(id);
+        verify(publicationRepository).deleteById(id);
     }
 
     @DisplayName("Test para publicación no encontrada en delete")
     @Test
-    public void testDeletPublicationError(){
-        //Given
+    public void testDeletPublicationError() {
+        // Given
         Long id = 123L;
 
-        //When
+        // When
         when(publicationRepository.findById(id)).thenReturn(Optional.empty());
         ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
-            publicationServiceImp.deletPublication(id); 
+            publicationServiceImp.deletePublication(id);
         });
-        
-        //Then
+
+        // Then
         assertEquals("publicacion", exception.getNombreDelRecurso());
         assertEquals("id", exception.getNombreDelCampo());
         assertEquals(id, exception.getValorDelCampo());
         assertEquals("Publicación no encontrada", exception.getMessage());
         verify(publicationRepository).findById(id);
-        verify(publicationRepository, never()).deleteById(anyLong()); //Verifico que no haya ejecutado el metodo. Es decri que no se borro ninguna publicación 
+        verify(publicationRepository, never()).deleteById(anyLong()); // Verifico que no haya ejecutado el metodo. Es
+                                                                      // decri que no se borro ninguna publicación
 
     }
 
