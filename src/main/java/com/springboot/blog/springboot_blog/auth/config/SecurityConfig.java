@@ -28,7 +28,12 @@ public class SecurityConfig {
         return http
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(authRequest -> authRequest
+        //Ruta para autenticación 
         .requestMatchers("/auth/**").permitAll()
+        //Rutas para Swagger 
+        .requestMatchers("/v3/api-docs/**").permitAll()
+        .requestMatchers("/swagger-ui/**").permitAll()
+        .requestMatchers("/swagger-ui.html").permitAll()
         .anyRequest().authenticated())
         //Desactivo los estados de sesion de sprin security para usar jwt
         .sessionManagement(sessionManager -> 
