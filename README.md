@@ -1,7 +1,6 @@
 # springBlog
 
-Api Rest sobre un blog de publicaciones con sus comentarios. 
-
-Para el sistema de autenticación se implementó Spring Security con JWT (JSON Web Token).
-
-Pruebas Unitarias en JUnit5 y Mockito 
+API REST para la gestión de un blog con publicaciones y comentarios.
+El sistema de autenticación fue desarrollado con Spring Security y JWT (JSON Web Token).
+Se implementaron pruebas unitarias utilizando JUnit 5 y Mockito.
+La documentación de los endpoints se realizó con Swagger.
