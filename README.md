@@ -1,6 +1,6 @@
 # springBlog
 
-Este proyecto consiste en una API RESTful desarrollada para la gestión de un blog, permitiendo realizar operaciones CRUD (crear, leer, actualizar y eliminar) sobre publicaciones y comentarios. Está construida utilizando Spring Boot.
+Este proyecto consiste en una API REST desarrollada para la gestión de un blog, permitiendo realizar operaciones CRUD (crear, leer, actualizar y eliminar) sobre publicaciones y comentarios. Está construida utilizando Spring Boot.
 
 La autenticación y autorización del sistema fue implementada mediante Spring Security junto con JWT (JSON Web Token), permitiendo proteger los endpoints y asegurar que solo los usuarios autenticados puedan acceder a ciertos recursos.
 
